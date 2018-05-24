@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="/css/xiuxiuyu.css"/>
+<link rel="stylesheet" href="/css/idangerous.swiper.css">
+<script src="/js/jquery-3.1.0-min.js"></script>
+<script src="/js/idangerous.swiper.min.js"></script>
+</head>
+<body>
+
+<div class="content">
+   <div class="main">
+   <!-- 视频 -->
+      <div class="main-focus swiper-container" style="position: relative;">
+		  <div class="swiper-wrapper" style="">
+		     <div class="swiper-slide" style="width:100%; height:190px; margin-top: 15px;">        
+				<div style="width:200px;height:170px;margin-left:22px;float:left;position: relative;border:1px solid #cacbcb;">
+				 <a href="#" title="#" target="_blank">
+				   <img width="200" height="140" src="/images/0818_1.png"/>
+				 </a>
+				 <span style="display: block; text-align: center;"><a href="" title="" target="_blank">tomcat配置和安装</a></span>
+				 <div style="position:absolute; left:10px; top:100px;">
+					 <a href="#" title="#" target="_blank">
+					  <img class="opacity-img" width="30"  height="30" src="/images/bofanganniu.png"/>
+					 </a>
+				 </div>
+				</div>
+				<div style="width:200;height:170px;margin-left:22px;float:left;position: relative;border:1px solid #cacbcb;">
+				 <a href="#" title="#" target="_blank">
+				   <img width="200" height="140" src="/images/0818_1.png"/>
+				 </a>
+				 <span style="display: block; text-align: center;"><a href="" title="" target="_blank">tomcat配置和安装</a></span>
+				 <div style="position:absolute; left:10px; top:100px;">
+					 <a href="#" title="#" target="_blank">
+					  <img class="opacity-img" width="30"  height="30" src="/images/bofanganniu.png"/>
+					 </a>
+				 </div>
+				</div>
+				<div style="width:200px;height:170px;margin-left:22px;float:left;position: relative;border:1px solid #cacbcb;">
+				 <a href="#" title="#" target="_blank">
+				   <img width="200" height="140" src="/images/0818_1.png"/>
+				 </a>
+				 <span style="display: block; text-align: center;"><a href="" title="" target="_blank">tomcat配置和安装</a></span>
+				 <div style="position:absolute; left:10px; top:100px;">
+					 <a href="#" title="#" target="_blank">
+					  <img class="opacity-img" width="30"  height="30" src="/images/bofanganniu.png"/>
+					 </a>
+				 </div>
+				</div>									   		                                
+		      </div>
+		      
+		      <div class="swiper-slide" style="width:100%; height:190px; margin-top: 15px;">        
+				<div style="width:200px;height:170px;margin-left:22px;float:left;position: relative;border:1px solid #cacbcb;">
+				 <a href="#" title="#" target="_blank">
+				   <img width="200" height="140" src="/images/0818_1.png"/>
+				 </a>
+				 <span style="display: block; text-align: center;"><a href="" title="" target="_blank">tomcat配置和安装</a></span>
+				 <div style="position:absolute; left:10px; top:100px;">
+					 <a href="#" title="#" target="_blank">
+					  <img class="opacity-img" width="30"  height="30" src="/images/bofanganniu.png"/>
+					 </a>
+				 </div>
+				</div>
+				<div style="width:200px;height:170px;margin-left:22px;float:left;position: relative;border:1px solid #cacbcb;">
+				 <a href="#" title="#" target="_blank">
+				   <img width="200" height="140" src="/images/0818_1.png"/>
+				 </a>
+				 <span style="display: block; text-align: center;"><a href="" title="" target="_blank">tomcat配置和安装</a></span>
+				 <div style="position:absolute; left:10px; top:100px;">
+					 <a href="#" title="#" target="_blank">
+					  <img class="opacity-img" width="30"  height="30" src="/images/bofanganniu.png"/>
+					 </a>
+				 </div>
+				</div>	
+				<div style="width:200px;height:170px;margin-left:22px;float:left;position: relative;border:1px solid #cacbcb;">
+				 <a href="#" title="#" target="_blank">
+				   <img width="200" height="140" src="/images/0818_1.png"/>
+				 </a>
+				 <span style="display: block; text-align: center;"><a href="" title="" target="_blank">tomcat配置和安装</a></span>
+				 <div style="position:absolute; left:10px; top:100px;">
+					 <a href="#" title="#" target="_blank">
+					  <img class="opacity-img" width="30"  height="30" src="/images/bofanganniu.png"/>
+					 </a>
+				 </div>
+				</div>		   		                                
+		      </div>
+		  </div>   
+		  <div class="pagination"></div> 
+      </div>
+      <div style="width:100%;position: relative;">
+        <div class="title-tip" style="top:-207px">
+                           热门视频
+        </div> 
+      </div>
+      <!-- java基础 -->
+      <div class="main-course">
+         <span>
+           <font>JAVA入门基础</font>
+           <font style="float: right;margin-right: 10px;"><a href="#" style="font-size: 14px;color: #2d374b;">更多</a></font>
+         </span>
+         <ul style="border-right: 1px solid #cacbcb;width:293px;">
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+         </ul>
+         
+         <ul>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+         </ul>
+         <div class="clear"></div>
+      </div>
+      
+      <!-- 项目实践 -->
+      <div class="main-course" style="position: relative;">
+         <div class="title-tip">项目实践</div>
+         <!--  
+         <div style="background-color: #ff5500;position: absolute;width:60px;left:645px;top:50px;z-index: 20;"><a href="#">更多>></a></div>
+         -->
+         <ul style="border-right: 1px solid #cacbcb;width:293px;">
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+         </ul>
+         
+         <ul>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+         </ul>
+         <div class="clear"></div>
+      </div>       
+ 
+      <!-- web入门基础 -->
+      <div class="main-course">
+         <span style="background-color: #f0f0f0;">
+           <font style="color: #2d374b;">WEB入门基础 </font>
+           <font style="float: right;margin-right: 10px;"><a href="#" style="font-size: 14px;color: #2d374b;">更多</a></font>
+         </span>
+         <ul style="border-right: 1px solid #cacbcb;width:293px;">
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+         </ul>
+         
+         <ul>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+         </ul>
+         <div class="clear"></div>
+      </div>
+      
+      <!-- 数据库+框架 -->
+      <div class="main-course" style="position: relative;border: 0;">
+         <div class="sidebar-item" style="width: 340px;float: left;">
+          <span style="background-color: #f0f0f0;">
+            <font style="color: #028ab3;display: inline-block;">数据库基础</font>
+            <font style="display:inline-block;float: right;margin-right: 10px;"><a href="#" style="font-size: 14px;color: #2d374b;">更多</a></font>
+          </span>
+          <ul style="list-style: none;list-style: circle;">
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+          </ul>
+         </div>
+         
+         <div class="sidebar-item" style="width: 340px;float: right;">
+           <span style="background-color: #f0f0f0;">
+            <font style="color: #028ab3;display: inline-block;">web框架</font>
+            <font style="display:inline-block;float: right;margin-right: 10px;"><a href="#" style="font-size: 14px;color: #2d374b;">更多</a></font>
+          </span>
+          <ul style="list-style: none;list-style: circle;">
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+          </ul>                  
+         </div>
+         <div class="clear"></div>
+      </div>      
+           
+   </div>
+   <!-- 右侧 -->
+   <div class="sidebar">
+       <div class="sidebar-item">
+          <span style="background-color: #f0f0f0;">
+            <font style="color: #2d374b;">网站内容概要>></font>
+          </span>
+          <p  style="letter-spacing: 5px;text-indent: 2em;padding-left: 10px;padding-right: 10px;">
+          java基础入门，web、数据库入门实践相关教程、在线视频教程，实际项目案例教程。
+          </p>
+       </div>
+       <div class="sidebar-item"></div>
+       <div class="sidebar-item"></div>
+       <div class="sidebar-item"></div>
+       
+       <div class="sidebar-item top10">
+          <span>
+            <font style="display: inline-block;">最新视频</font>
+          </span>
+          <ul style="list-style: none;list-style-image: url('/images/video_tip.jpg');">
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+          </ul>
+       </div>
+       <div class="sidebar-item top10">
+          <span>
+            <font style="display: inline-block;">最新内容</font>
+          </span>
+          <ul style="list-style: none;list-style: circle;">
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+            <li><a href="#">tomcat的下载安装和配置</a><em>(08-19)</em></li>
+          </ul>
+       </div>
+       <div class="sidebar-item top10">
+          <span style="background-color: #f0f0f0;">
+            <font style="display: inline-block;color: #717274;">站长推荐</font>
+            <font style="display:inline-block;float: right;margin-right: 10px;"><a href="#" style="font-size: 14px;color: #2d374b;">更多</a></font>
+          </span>
+       </div>
+   </div>
+   <div class="clear"></div>
+</div>
+
+
+<script>
+  var mySwiper = new Swiper('.swiper-container',{
+    loop: true,
+	autoplay: 3000,
+	pagination : '.pagination',
+	paginationClickable : true,
+	autoplayDisableOnInteraction : false,
+	grabCursor : true,
+  });
+</script>
+</body>
+</html>

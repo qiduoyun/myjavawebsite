@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${content.title!}</title>
+<link rel="stylesheet" type="text/css" href="/css/xiuxiuyu.css"/>
+</head>
+<body>
+<!-- header part -->
+[#include "../include/no_channel_header.html"/]
+<div class="content">
+ <span class="tags" style="background: none;margin-bottom: 10px;"><font>你的位置：</font><a href="/">首页</a><font>>></font><a href="${content.channel.parentChannel.fullUrl!}">${content.channel.parentChannel.name!}</a><font>>></font><a href="${content.channel.fullUrl!}">${content.channel.name!}</a><font>>>内容</font></span>
+</div>
+
+<!-- 文章内容 -->
+<div class="content">
+	<div style="border: 1px solid #cacbcb;" class="main">
+	  <div class="content-detail">
+	    <h2>${content.title!}</h2>
+	    <em>${content.author!} 发布于：${content.updateTime?string('yyyy-MM-dd')}  浏览量：${content.views!'5'}</em>
+	    <span id="content-detail">	    
+	      
+	    	<embed title="${content.title!}" height="460" width="100%" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high" flashvars="vcastr_file=${content.filePath!}" allowfullscreen="true" src="/images/flvplayer.swf">
+	       </embed>
+	      
+	    </span>
+	
+	   <span style="display: block;">
+	     <font style="display:inline-block;font-size: 14px;font-weight: bold;">上一篇：</font>
+	     [@xxy_content id=content.id next='-1' channelId=content.channelId]
+	      [#if tag_bean??]
+	       <a class="article-link" style="display:inline-block;font-size: 14px;" href="${tag_bean.fullUrl!}" title="${tag_bean.title!}">${tag_bean.title!}</a>
+	      [#else]
+	                          没有了 
+	      [/#if]
+	     [/@xxy_content]
+	   </span>    
+	   <span style="display: block;">
+	     <font style="display:inline-block;font-size: 14px;font-weight: bold;">下一篇：</font>
+	     [@xxy_content id=content.id next=1 channelId=content.channelId]
+	      [#if tag_bean??]
+	       <a class="article-link" style="display:inline-block;font-size: 14px;" href="${tag_bean.fullUrl!}" title="${tag_bean.title!}">${tag_bean.title!}</a>
+	      [#else]
+	                          没有了 
+	      [/#if]
+	     [/@xxy_content]
+	   </span> 
+	    
+	    <span id="comment">
+	      评论列表
+	    </span>
+	    <span class="comment-list">
+	      <font>王宝强  2016-08-21</font>
+	      <p>没有得私情，不要论说我</p>
+	    </span>
+	    <span class="comment-list">
+	      <font>邓超回复王宝强  2016-08-21</font>
+	      <p>没有得私情，不要论说我</p>
+	    </span>
+	    <div id="comment-submit">
+	       <font>
+	       发表评论:
+	       </font>
+	       <div style="display: inline-block;float: left;">
+	         <textarea rows="" cols="" style="display: block;width:590px;border:1px solid #cacbcb;"></textarea>
+	         <div style="display: block;border:1px solid #cacbcb;margin-top: -2px;">
+	           <input style="float: right;border-bottom: none;border-top: none;" type="button" value="发表"/>
+	           <div class="clear"></div>
+	         </div>
+	       </div>
+	    </div>
+	  </div>
+	</div>
+
+
+<div class="sidebar" style="border: 1px solid #cacbcb;">
+<span class="tags">
+  <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #fff">栏目排行榜</font>
+</span>
+
+<ul style="list-style:none; margin: 0 ;padding-top: 0;padding-left: 10px;padding-bottom: 10px;">
+[@content_list count=12 orderBy=3 type=3 channelId=content.channelId]
+ [#list tag_list as a]
+	<li ><font class="list-number" style="[#if a_index<3]background-color: #ff5500;[/#if]">${a_index+1}</font>
+	 <a class="article-link" style="font-size: 14px;display: inline-block;padding-top: 10px;margin-left: 5px;" href="${a.fullUrl!}" target="_blank">[@text_cut s=a.title len=10 append='...'/]</a>
+	 <em style="display: inline-block;color: #ff5500;float: right;margin-right: 10px">(${a.updateTime?string('MM-dd')})</em>
+	</li>
+ [/#list]
+[/@content_list]
+</ul>
+
+
+
+</div>
+
+<div class="clear"></div>
+</div>
+
+[#include "../include/footer.html"/]
+</body>
+</html>

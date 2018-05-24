@@ -1,0 +1,46 @@
+<!-- header part -->
+<div class="header">
+  <div class="top">
+    <div class="top-middle">
+      <span style="float:left;"><a href="#">秀秀育--免费java在线学习</a></span>
+      <span style="float:right;">
+      
+
+      
+      <a target="blank" href="/touser.jhtml">[#if user??]${user.username!}</a> <a> |[/#if] </a> 
+      <a href="[#if user??]/loginout.jhtml?path=/[#else]javascript:void(0)[/#if]" onclick="[#if user??][#else]login()[/#if]"> [#if user??]退出[#else]登录[/#if]   </a>
+      <a> | </a> <a target="blank" href="[#if user??]/touser.jhtml?userid=${user.id!}[#else]/toRegister.jhtml[/#if]">[#if user??]个人中心[#else]注册[/#if]</a> <a> | </a> 
+      <a href="#">设为首页</a> <a> | </a> <a  target="blank" href="#">加入收藏</a> 
+
+      </span>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="top-inner">
+     <span style="float: left;display: inline-block;padding-top:10px;padding-bottom:10px;">
+        <a href="/index.jhtml"><img height="50" alt="" src="/images/xiuxiuyu_logo.gif"/></a>
+     </span>
+     <form id="search-form" action="/search.jhtml" method="post" target="_blank">
+	     <span style="float: right;display: inline-block;padding-top:20px;">
+	        <span style="display: inline-block;float:left;height:32px;border:1px solid #028ab3;">
+	          <input name="searcher" type="text" value="${searcher!}" style="height: 30px;width:250px;padding-left: 5px;padding-right: 17px;border:0;"/>
+	        </span>
+	        <span style="display: inline-block;background-color: #028ab3;margin-left: -12px;float:left;height:34px;">
+	          <input type="submit" value="搜索" style="display:inline-block;height: 32px;width:60px;background-color: #028ab3;border: medium none;color: #fff;font-size: 16px;"/>
+	        </span>
+	     </span>
+	 </form>
+     <div class="clear"></div>
+  </div>
+  <div class="nav">
+    <ul>
+      <li><a class="selected" href="/">首页</a></li>
+      [@channel_list]
+       [#list tag_list as c]
+      <li><a href="${c.fullUrl!}"  target="_blank">${c.name!}</a></li>
+       [/#list]
+      [/@channel_list]
+    </ul>
+    <div class="clear"></div>
+  </div>
+</div>

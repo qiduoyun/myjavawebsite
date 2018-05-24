@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <filter>
+    <filter-name>xssFilter</filter-name>
+    <filter-class>com.xiuxiuyu.filter.XssFilter</filter-class>
+    <init-param>
+      <param-name>filterChar</param-name>
+      <param-value>'@&quot;@\@#@:@%@></param-value>
+    </init-param>
+    <init-param>
+      <param-name>replaceChar</param-name>
+      <param-value>‘@“@＼@＃@：@％@＞</param-value>
+    </init-param>
+    <init-param>
+      <param-name>splitChar</param-name>
+      <param-value>@</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>xssFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>  
+        <filter-name>encodingFilter</filter-name>  
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  
+        <init-param>  
+            <param-name>encoding</param-name>  
+            <param-value>UTF-8</param-value>  
+        </init-param>  
+        <init-param>  
+            <param-name>forceRequestEncoding</param-name>  
+            <param-value>true</param-value>  
+        </init-param> 
+        <init-param>  
+            <param-name>forceResponseEncoding</param-name>  
+            <param-value>true</param-value>  
+        </init-param>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>encodingFilter</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping>
+    <filter>
+	    <filter-name>osivFilter</filter-name>
+	    <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+    </filter>
+   <filter-mapping>
+    <filter-name>osivFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+   </filter-mapping>
+   <filter-mapping>
+    <filter-name>osivFilter</filter-name>
+    <url-pattern>*.jhtml</url-pattern>
+   </filter-mapping> 
+   <filter-mapping>
+    <filter-name>osivFilter</filter-name>
+    <url-pattern>*.jspx</url-pattern>
+   </filter-mapping> 
+   <filter-mapping>
+    <filter-name>osivFilter</filter-name>
+    <url-pattern>*.htm</url-pattern>
+   </filter-mapping>  
+      
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+			classpath:/*applicationContext.xml
+		</param-value>
+  </context-param>
+  
+ <listener>
+     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+    
+  <servlet>
+     <servlet-name>front</servlet-name>
+     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+     <init-param>
+       <param-name>contextConfigLocation</param-name>
+       <param-value>WEB-INF/config/spring-servlet-front.xml</param-value>
+     </init-param>
+  </servlet>
+  <servlet>
+     <servlet-name>admin</servlet-name>
+     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+     <init-param>
+       <param-name>contextConfigLocation</param-name>
+       <param-value>WEB-INF/config/spring-servlet-admin.xml</param-value>
+     </init-param>
+  </servlet>  
+  <servlet-mapping>
+    <servlet-name>front</servlet-name>
+    <url-pattern>*.jhtml</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>front</servlet-name>
+    <url-pattern>*.jspx</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>front</servlet-name>
+    <url-pattern>*.htm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+     <servlet-name>admin</servlet-name>
+     <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+     <welcome-file>index.jhtml</welcome-file>
+  </welcome-file-list>
+  
+  
+</web-app>

@@ -1,0 +1,63 @@
+package com.xiuxiuyu.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.xiuxiuyu.beans.Channel;
+import com.xiuxiuyu.beans.Content;
+import com.xiuxiuyu.service.IChannelService;
+import com.xiuxiuyu.service.IContentService;
+
+@Controller
+public class FrontIndexAct {
+	/**
+	 * 模板目录
+	 */
+	private static String BASEPATH="/WEB-INF/t/"; 
+	@Autowired
+	private IContentService contentService;
+	@Autowired
+	private IChannelService channelService;
+	/**
+	 * 首页
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping("/index.jhtml")
+    public String index(ModelMap map){
+		Content content=contentService.getContentById(1);
+		map.put("msg", "hello index");
+		map.put("content", content);
+    	return "/WEB-INF/t/index/index.html";
+    }
+	/**
+	 * 栏目首页
+	 * @param url
+	 * @return
+	 */
+	@RequestMapping(value="/{url}/index{page}.jhtml",method=RequestMethod.GET)
+	public String channelIndex(@PathVariable String url,@PathVariable String page,ModelMap modelMap){
+		Channel channel = channelService.getChannelInfoByUrl(url);
+		modelMap.put("channel", channel);
+		modelMap.put("page", page);
+		return BASEPATH+channel.getChannelTemplate();
+	}
+	/**
+	 * 内容页
+	 * @param url
+	 * @param id
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping("/{url}/{id}.jhtml")
+	public String content(@PathVariable String url,@PathVariable Integer id,ModelMap modelMap){
+		Content content = contentService.getContentByUrlAndId(url, id);
+		modelMap.put("content", content);
+		return BASEPATH+content.getContentTemplate();
+	}
+}

@@ -1,0 +1,10 @@
+package com.xiuxiuyu.jobs;
+
+
+public class TestJob {
+
+	public void execute(){
+		System.out.println("TestJob...execute() start...");
+	}
+	
+}

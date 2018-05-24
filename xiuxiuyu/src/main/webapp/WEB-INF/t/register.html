@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>欢迎注册秀秀育账号</title>
+<link rel="stylesheet" type="text/css" href="/css/xiuxiuyu.css"/>
+<script src="/js/jquery-3.1.0-min.js"></script>
+<script src="/layer/layer.js"></script>
+</head>
+<style>
+.link-a{
+text-decoration: none;
+color:#333;
+}
+.link-a:HOVER {
+	cursor: pointer;
+	color:#996600;
+}
+.link-bt{
+background-color: #528ab3;
+text-decoration: none;
+}
+.link-bt:hover{
+ background-color: #028ab3;
+ cursor: pointer;
+ text-decoration: none;
+}
+</style>
+<body>
+[#include "include/no_channel_header.html"/]
+
+<div class="content" style="margin-top:100px;padding-bottom: 20px;">
+   <div class="main" style="width:680px;border-right: 1px solid #cacbcb;padding-right:10px;">
+   <span class="tags" style="background-color: #f0f0f0;">
+   <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #333">站长推荐</font>
+  </span>
+    [@content_list channelId='19' type='1' orderBy='3' count='3']
+	 [#list tag_list as a]
+	  <div class="article-list">
+	
+	    <a href="${a.fullUrl}">[@text_cut s=a.title len=50 append='...'/]</a>
+	    <em>${a.author!}    发布于：${a.updateTime?string("MM-dd")}</em>
+	    <span>[@html_cut s=a.txt len=66 append='...'/]
+	    </span>
+	    <em>浏览量（2435）</em>
+	  </div>
+	   [/#list]
+	  [/@content_list ]
+   </div>
+   <div class="sidebar">
+   <span class="tags">
+	  <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #fff">新用户注册</font>
+	</span>
+      <form id="register-form"   method="post" action="/register.jhtml">
+		<div id="regist-error" style="width:300px;margin: 0 auto;margin-top:46px;color: #ff0000;font-size: 12px;">
+		  ${message!}
+		</div>
+		<div style="width:300px;height:30px;margin: 0 auto;margin-top:10px;border:1px solid #cacbcb;">
+		  <span style="display: inline-block;float:left;">
+		    <img height="28" alt="" src="/images/password.gif">
+		  </span>
+		  <span style="display: inline-block;float:left;">
+		    <input id="username" name="username" placeholder ="请输入用户名" style="border:none;width:260px;padding-left:5px;height:26px;font-size: 16px;" type="text" onchange="validateUsername(this.value)"/>
+		  </span>
+		</div>
+		<div style="width:300px;height:30px;margin: 15px auto;border:1px solid #cacbcb;">
+		  <span style="display: inline-block;float:left;">
+		    <img height="28" src="/images/user.gif"/>
+		  </span>
+		  <span style="display: inline-block;float:left;">
+		     <input id="password" name="password" placeholder ="请输入密码" style="border:none;width:260px;padding-left:5px;height:26px;font-size: 16px;" type="password">
+		  </span>
+		</div>
+		<div style="width:300px;height:30px;margin: 15px auto;border:1px solid #cacbcb;">
+		  <span style="display: inline-block;float:left;">
+		    <img height="28" src="/images/user.gif"/>
+		  </span>
+		  <span style="display: inline-block;float:left;">
+		     <input id="password2" placeholder ="请确认密码" style="border:none;width:260px;padding-left:5px;height:26px;font-size: 16px;" type="password">
+		  </span>
+		</div>
+		<div style="width:300px;margin: 0 auto;">
+		  <span style="display: inline-block;float: left;font-size: 14px;">
+		  我已有账号</span>
+		  <span style="display: inline-block;float: right;">
+		    <a class="link-a" href="javascript:void(layer.msg('请联系客服'))" style="font-size: 14px;">忘记密码</a>
+		    <a style="display: inline-block;width: 20px;"></a>
+		    <a class="link-a" target="_blank" href="/toLogin.jhtml" style="font-size: 14px;">用户登录</a>
+		  </span>
+		  <div style="clear: both;"></div>
+		</div>
+		<a class="link-bt" style="display: block;width:300px;margin: 10px auto;padding-top:5px;padding-bottom:5px;text-align: center;color:#fff;font-size: 18px;" onclick="register()">
+		注册</a>
+	  </form>
+   </div>
+   <div class="clear"></div>
+</div>
+
+[#include "include/footer.html"/]
+
+<script type="text/javascript">
+//注册
+  function register(){
+	  var username=$('#username').val();
+	  if(username==''){
+		  layer.alert('请输入用户名');
+		  return;
+	  }
+	  var data={'username':username};
+	  $.ajax({
+		  method:'POST',
+		  url:'/validateUsername.jhtml',
+		  data:data,
+		  error:function(e){layer.msg(e.message)},
+		  success:function(resultData){
+			  var data = eval('('+resultData+')');
+			  if(data.state==1){
+				  var password = $('#password').val();
+				  if(password==''){
+					  layer.alert('请输入密码');
+					  return;
+				  }
+				  var password2 = $('#password2').val();
+				  if(password2==''){
+					  layer.alert('请确认密码');
+					  return;
+				  }
+				  if(password != password2){
+					  layer.alert('两次输入的密码不一致');
+					  return;
+				  }
+				  $('#register-form').submit();
+			  }else{
+				  $('#regist-error').html('该用户名已被注册');
+			  }
+		  }
+	  });
+	  
+  }
+  //验证用户名是否可注册
+  function validateUsername(username){
+	  var isPass=false;
+	  var data={'username':username};
+	  $.ajax({
+		  method:'POST',
+		  url:'/validateUsername.jhtml',
+		  data:data,
+		  error:function(e){layer.msg(e.message)},
+		  success:function(resultData){
+			  var data = eval('('+resultData+')');
+			  if(data.state==1){
+				  $('#regist-error').html('');
+				  isPass=true;
+			  }else{
+				  $('#regist-error').html('该用户名已被注册');
+			  }
+		  }
+	  });
+	  return isPass;
+  }
+</script>
+</body>
+</html>

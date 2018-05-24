@@ -1,0 +1,16 @@
+package com.xiuxiuyu.service;
+
+import com.xiuxiuyu.beans.User;
+
+public interface IUserService {
+	/**
+	 * 根据用户名获取用户信息
+	 * @param username
+	 * @return
+	 */
+	public User getUserByUsername(String username);
+	/**
+	 * 新用户注册
+	 */
+	public void SaveUser(User user);
+}

@@ -1,0 +1,39 @@
+<!-- header part -->
+<div class="header">
+  <div class="top">
+    <div class="top-middle">
+      <span style="float:left;"><a href="#">秀秀育--免费java在线学习</a></span>
+      <span style="float:right;"><a href="#">设为首页</a> <a>|</a> <a href="#">加入收藏</a>  <a>|</a> <a href="#">注册</a>  <a>|</a> <a href="#">登录</a></span>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="top-inner">
+     <span style="float: left;display: inline-block;padding-top:10px;padding-bottom:10px;">
+        <a href="/index.jhtml"><img height="50" alt="" src="/images/xiuxiuyu_logo.gif"/></a>
+     </span>
+     <span style="float: right;display: inline-block;padding-top:20px;">
+        <span style="display: inline-block;">
+          <input type="text" style="height: 30px;width:250px;padding-left: 5px;padding-right: 17px;"/>
+        </span>
+        <span style="display: inline-block;background-color: #028ab3;border-bottom: 3px solid #028ab3;margin-left: -12px;">
+          <input type="button" value="搜索" style="display:inline-block;height: 34px;width:60px;background-color: #028ab3;border: 0;color: #fff;font-size: 16px;"/>
+        </span>
+     </span>
+     <div class="clear"></div>
+  </div>
+  <div class="nav">
+    <ul>
+      <li><a  href="/">首页</a></li>
+      [@channel_list]
+       [#list tag_list as c]
+      <li><a href="${c.fullUrl!}" 
+      [#if channel??&&channel.id=c.id]
+         class="selected"
+      [/#if] target="_blank">
+      ${c.name!}</a></li>
+       [/#list]
+      [/@channel_list]
+    </ul>
+    <div class="clear"></div>
+  </div>
+</div>

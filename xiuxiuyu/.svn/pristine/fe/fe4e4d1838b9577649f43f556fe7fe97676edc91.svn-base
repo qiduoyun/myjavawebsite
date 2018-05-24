@@ -1,0 +1,391 @@
+body{
+	margin:0;
+	font-family: "微软雅黑","Microsoft YaHei";
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+.header{
+   width:100%;
+   margin:0;	
+}
+.top{
+	width:100%;
+	background-color: #444;
+}
+.top-middle{
+	display:block;
+	margin:0 auto;
+	width:1000px;
+}
+.top-middle a{
+	display: inline-block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #999;
+	font-size: 12px;
+}
+.top-inner{
+	margin:0 auto;
+	width:1000px;
+}
+.nav{
+	width:100%;
+	background-color: #028ab3;
+}
+.nav ul{
+	padding:0;
+	width:1000px;
+	margin:0 auto;
+	list-style: none;
+}
+.nav ul li{
+	float: left;
+	margin-left: 1px;
+	margin-right:1px;
+}
+.nav ul li a{
+	color:#fff;
+	display: inline-block;
+	padding-top:15px;
+	padding-bottom: 15px;
+	padding-left:20px;
+	padding-right:20px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.nav ul li a:HOVER{
+	background-color: #fff;
+	color:#717274;
+	text-decoration: none;
+	cursor: pointer;
+}
+.nav ul li .selected{
+	background-color: #fff;
+	color:#717274;
+}
+
+.content{
+	width:1000px;
+	margin:10px auto;
+}
+.main{
+	float:left;
+	width:690px;
+}
+.sidebar{
+	float: right;
+	width:300px;
+}
+.main-focus{
+	width:100%;
+	height:220px;
+	border:1px solid #dcdbdb;
+}
+.main-course{
+	width:100%;
+	margin-top:5px;
+	border:1px solid #dcdbdb;
+}
+.sidebar-item{
+	width:100%;
+	border:1px solid #dcdbdb;	
+}
+.sidebar-item span{
+	display: block;
+	background-color: #028ab3;
+}
+.sidebar-item span font{
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+}
+.top10{
+	margin-top: 10px;
+}
+.sidebar-item ul{
+	list-style: none;
+	padding-top: 10px;
+	padding-bottom:10px;
+	padding-left:32px;
+	padding-right:10px;
+	margin: 0;
+	font-size: 14px;
+}
+.sidebar-item ul a{
+	display:inline-block;
+	padding-top:5px;
+	padding-bottom:3px;
+	color: #2d374b;
+}
+.sidebar-item ul em{
+	display:inline-block;
+	padding-top:5px;
+	padding-bottom:3px;
+	float: right;
+	margin-right: 10px;
+	color:#ff5500;
+}
+.sidebar-item ul a:HOVER{
+	color: #996600;
+}
+.pagination {
+  position: absolute;
+  z-index: 20;
+  bottom: 2px;
+  width: 100%;
+  text-align: center;
+}
+.swiper-pagination-switch {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 8px;
+  background: #555;
+  margin: 0 5px;
+  opacity: 0.8;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.swiper-active-switch {
+  background: #028ab3;
+}
+.arrow-left{
+position:absolute;
+z-index:20;
+}
+.arrow-right{
+position:absolute;
+z-index:20;
+}
+.column {
+    background: rgba(0, 0, 0, 0)  #028ab3 repeat-x scroll 0 0;
+    border: 0 none;
+    height: 39px;
+    width: 690px;
+}
+.opacity-img{
+}
+.opacity-img:hover{
+opacity:0.8;cursor: pointer;}
+.clear{
+	clear: both;
+}
+.title-tip{
+	color:#fff;
+	font-size:16px;
+	font-weight:bold;
+	position: absolute;
+	width:25px;
+	top:10px;
+	left:-10px;
+	background-color: #028ab3;
+	z-index: 20;
+	text-align: center;
+	border-radius:5px;
+	line-height: 30px;
+}
+.title-tip font{
+	display: block;
+	text-align: center;
+}
+.main-course span{
+	display: block;
+	background-color: #028ab3;
+}
+.main-course span font{
+	display: inline-block;
+	font-size: 16px;
+	color: #fff;
+	font-weight: bold;
+	padding-top:10px;
+	padding-left:10px;
+	padding-bottom: 10px;
+}
+.main-course ul{
+	padding: 0;
+	float: left;
+	width: 290px;
+	padding-left:50px;
+	list-style: circle;
+}
+.main-course ul li a{
+	font-size:14px;
+	display:inline-block;
+	padding-top:5px;
+	padding-bottom:3px;
+	color: #2d374b;
+}
+.main-course ul li em{
+	font-size:14px;
+	display:inline-block;
+	padding-top:5px;
+	padding-bottom:3px;
+	color: #717274;
+	float: right;
+	margin-right: 25px;
+}
+.main-course ul li a:HOVER {
+	color: #996600;
+}
+.tags{
+	background-color:  #028ab3;
+	display: block;
+	
+}
+.tags a{
+	color: #2d374b;
+	display: inline-block;
+	font-size: 14px;
+
+}
+.video-list{
+	width:100%;
+	
+}
+.video-list span{
+	display: block;
+	width: 150px;
+	float: left;
+	margin-left: 18px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+}
+.video-list span a{
+	display: block;
+	text-align: center;
+	position: relative;
+}
+
+.pages{
+
+	
+}
+.pages a{display: inline-block;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 10px;
+padding-right: 10px;
+background-color: #f0f0f0;
+}
+.pages font {
+	display: inline-block;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 10px;
+padding-right: 10px;
+}
+.pages .next:HOVER {
+	background-color: #028ab3;
+	color: #fff;
+	
+}
+.more{
+	display: inline-block;
+	float: right;
+	margin-right: 10px;
+	font-size: 14px;
+	padding-top: 12px;
+	color: #028ab3;
+}
+.list-number{
+	display: inline-block;
+	width:24px;
+	padding-top:2px;
+	padding-bottom:2px;
+	text-align:center;
+	font-size:14px;
+	background-color:#cacbcb;
+}
+.article-list{
+	width:660px;
+	margin:20px auto;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #cacbcb;
+}
+.article-list a{
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #028ab3;
+}
+.article-list em{
+	display: block;
+	font-size: 10px;
+	color: #717274;
+}
+.article-list span{
+	display: block;
+	font-size: 12px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.article-link{
+	color: #2d374b;
+}
+.article-link:HOVER {
+	color:#996600;
+}
+.content-detail{
+	width:660px;
+	margin:20px auto;
+	padding-bottom: 10px;
+}
+.content-detail h2{
+	display:block;
+	margin:0;
+	padding-bottom:15px;
+	color:#028ab3;
+	font-size: 18px;
+}
+.content-detail em{
+	display: block;
+	color: #717274;
+	font-size: 14px;
+	border-bottom: 1px solid #cacbcb;
+}
+#content-detail{
+	display:block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#comment{
+	display: block;
+	margin-top:30px;
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #cacbcb;
+}
+.comment-list{
+	display: block;
+	font-size: 12px;
+	border-bottom: 1px dotted #cacbcb;
+}
+.comment-list font{
+	display: block;
+}
+.comment-list p{
+	margin-top: 5px;
+}
+#comment-submit{
+	display: block;
+	margin-top:20px;
+}
+#comment-submit font{
+	display: inline-block;
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>个人中心</title>
+<link rel="stylesheet" type="text/css" href="/css/xiuxiuyu.css"/>
+<script src="/js/jquery-3.1.0-min.js"></script>
+<script src="/layer/layer.js"></script>
+</head>
+<style>
+.user-nav{
+display:block;
+padding-top:10px;
+padding-bottom:10px;
+font-size:16px;
+padding-left:50px;
+border-top:1px dashed #cacbcb;
+border-bottom:1px dashed #cacbcb;
+text-decoration: none;
+}
+.user-nav-selected{
+background-color: #028ab3;
+color: #fff;
+}
+.user-nav:HOVER{
+background-color: #028ab3;
+color: #fff;
+text-decoration: none;
+}
+</style>
+<body>
+[#include "include/no_channel_header.html"/]
+
+<div class="content" style="margin-top:20px;padding-bottom: 10px;">
+   <span class="tags" style="background: none;margin-bottom: 10px;"><font>你的位置：</font><a href="/">首页</a><font>>></font>
+ 
+ <a href="touser.jhtml?userid=${user.id}">个人中心</a><font>>></font><a href="touser.jhtml?userid=${user.id}">个人资料</a></span>
+  
+  <div style="width:250px;border:1px solid #cacbcb;float:left;padding-bottom:40px;">
+     <font style="display:block;padding-top:10px;padding-bottom:10px;font-size:18px;padding-left:10px;color:#028ab3;background-color: #f0f0f0;margin-bottom:30px;">个人中心</font>
+     <a class="user-nav" href="/touser.jhtml?userid=${user.id}">个人资料</a>
+     <a class="user-nav" href="/touserpassword.jhtml">修改密码</a>
+  </div>
+  
+  <div style="width:720px;border:1px solid #cacbcb;float:right;padding-top:20px;padding-bottom:100px;">
+     <div style="width:400px;margin:0 auto;">
+      <form action="/user.jhtml" method="post">
+       <input type="hidden" name="userid"  value="${user.id}">
+       <table style="width: 100%;">
+         <tr style="width: 100%;height: 40px;">
+           <td width="50%">用户名称</td>
+           <td width="50%">${user.username!}</td>
+         </tr>
+         <tr style="width: 100%;height: 40px;">
+           <td>用户类型</td>
+           <td>${user.role.name!}
+           <font style="margin-left: 15px;">
+             <img src="/images/vip-icon.png"/>
+           </font>
+           <a style="color: #028ab3;" href="/toOrder.jhtml" target="_blank">[#if user.role.id==1]开通会员[#else]立即续费[/#if]</a></td>
+         </tr>
+         <tr style="width: 100%;height: 40px;">
+           <td>会员剩余</td>
+           <td>${user.days!}天</td>
+         </tr>
+         <tr style="width: 100%;height: 40px;"> 
+           <td>用户邮箱</td>
+           <td><input style="width:150px;" type="text" value="${user.email!}"  name="email"/></td>
+         </tr>
+         <tr style="width: 100%;height: 40px;">
+           <td>联系电话</td>
+           <td><input style="width:150px;" type="text" value="${user.telphone!}" name="telphone"/></td>
+         </tr>
+       </table>
+          <span style="display: block;height:30px;width:100px;border: 1px solid #028ab3;margin-top:20px;">
+            <input style="background-color: #028ab3;border:0;width:100px;height:30px;color: #fff;cursor: pointer;" type="submit" value="修改信息"/>
+          </span>
+       </form>
+     </div>
+  </div>
+  
+  <div class="clear"></div>
+</div>
+
+
+ 
+ 
+
+
+ 
+[#include "include/footer.html"/]
+
+</body>
+</html>

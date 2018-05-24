@@ -1,0 +1,55 @@
+	    <span id="comment">
+	      评论列表
+	    </span>
+	 [@comment_list contentId=content.id]  
+	   [#list tag_list as c] 
+	    <span class="comment-list">
+	      <font>
+	       ${c_index+1}楼   [#if c.user??]${c.user.username}[#else]匿名网友[/#if]
+	       ${c.createTime!}
+	      </font>
+	      <p>${c.message!}</p>
+	    </span>
+	    [/#list]
+	 [/@comment_list]   
+	    <div id="comment-submit">
+	       <font>
+	       发表评论:
+	       </font>
+	       <div style="display: inline-block;float: left;margin-bottom:30px;">
+	         <textarea id="comment-content" rows="" cols="" style="display: block;width:650px;border:1px solid #cacbcb;font-size: 12px;padding:5px;"></textarea>
+	         <div style="display: block;border:1px solid #cacbcb;margin-top: -2px;">
+	           <input style="float: right;border-bottom: none;border-top: none;width:100px;cursor: pointer;border-left:2px solid #cacbcb;" type="button" value="发表" onclick="submitComment()"/>
+	           <div class="clear"></div>
+	         </div>
+	       </div>
+	    </div>
+
+<script type="text/javascript">
+  function submitComment(){
+	  var message = $('#comment-content').val();
+	  if(message==''){
+         layer.alert('评论内容不能为空');		  
+	     return;
+	  }
+	  if(message.length>300){
+		  layer.alert('评论内容长度不能超过300');
+		  return;
+	  }
+	  var contentId = '${content.id}';
+	  var data = {'contentId':contentId,'message':message};
+	  $.ajax({
+		  method:'POST',
+		  url:'/saveComment.jhtml',
+		  data:data,
+		  success:function(resultData){
+			  if(resultData == '1'){
+				  layer.alert('评论成功');
+				  window.location = window.location;
+			  }else{
+				  layer.alert(resultData);
+			  }
+		  }
+	  });
+  }
+</script>	    

@@ -1,0 +1,13 @@
+#mysql version database setting
+jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://192.168.8.120:3306/xiuxiuyu?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+jdbc.username=root
+jdbc.password=12345
+
+#hibernate settings
+hibernate.show_sql=true
+hibernate.format_sql=false
+
+#dbcp settings
+dbcp.maxIdle=5
+dbcp.maxActive=40

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>秀秀育VIP-标准版</title>
+<link rel="stylesheet" type="text/css" href="/css/xiuxiuyu.css"/>
+<script src="/js/jquery-3.1.0-min.js"></script>
+<script src="/layer/layer.js"></script>
+</head>
+<style>
+ .check-item{
+   display: inline-block;
+   border:2px solid #cacbcb;
+   text-align: center;
+   width:200px;
+   padding-top:36px;
+   padding-bottom:36px;
+   font-size: 18px;
+ }
+ .check-item:HOVER{
+ border:2px solid #028ab3;
+ cursor: pointer;
+ }
+ .checked-item{
+   border:2px solid #028ab3;
+ }
+ .link-bt{
+background-color: #528ab3;
+text-align: center;
+}
+.link-bt:hover{
+ text-decoration:none;
+ background-color: #028ab3;
+ cursor: pointer;
+}
+</style>
+<body>
+<!-- header part -->
+[#include "../include/no_channel_header.html"/]
+
+<!-- 文章内容 -->
+<div class="content">
+<span class="tags" style="background: none;margin-bottom: 10px;"><font>你的位置：</font><a href="/">首页</a><font>>></font><a href="/toOrder.jhtml">开通秀秀育VIP会员</a><font>>></font>支付宝支付</span>
+
+	<div style="width:1000px;">
+		<font class="check-item checked-item" data="29" style="float: left;"><strong style="color: #ff6e1e;">29</strong>元/1月</font>
+		<font class="check-item" data="54" style="float: left;margin-left: 50px;"><strong style="color: #ff6e1e;">54</strong>元/2月</font>
+		<font class="check-item" data="79" style="float: left;margin-left: 50px;"><strong style="color: #ff6e1e;">79</strong>元/3月</font>
+		<font class="check-item" data="294" style="float: right;"><strong style="color: #ff6e1e;">294</strong>元/12月</font>
+		<div class="clear"></div>
+	</div>
+	
+	<div style="width:998px;border:1px solid #cacbcb;background-color: #f0f0f0;margin:20px auto;">
+	   <span style="display: block;background-color: #fff;">
+	     <font style="display: inline-block;width:100px;padding-top: 10px;padding-bottom:10px;text-align: center;color:#028ab3;background-color: #f0f0f0;font-size: 18px;">支付平台</font>
+	     <font style="display: inline-block;float: right;padding-top: 10px;padding-bottom:10px;margin-right: 20px;">
+	        <img src="/images/vip-icon.png"/>尊贵会员
+	     </font>
+	   </span>
+	   
+	   <div style="width:920px;margin:46px auto;border:1px dashed #cacbcb;background-color: #fff;">
+	      <font style="display: block;padding-top:10px;padding-bottom:10px;text-align: center;">应付金额：<strong id="pay-count" style="color: #ff6e1e;font-size: 18px;display: inline-block;width:40px;">29</strong>元</font>
+	   </div>
+	   
+	   <div style="width: 300px;margin:50px auto;">
+	      <div>
+	        <img id="zhifubao-mark" width="300" height="320" src="/images/zhifubao01_.png"/>
+	        <font style="display: block;font-size: 14px;margin-top:25px;text-align: center;">扫描二维码轻松支付(支付宝)</font>
+	      </div>
+	     <div class="clear"></div>
+	   </div>
+	   
+	   <div style="width:920px;margin:66px auto;">
+	      <font style="display: block;font-size: 16px;color: #028ab3;margin: 10px auto;">VIP会员权益说明</font>
+	      <font style="display: block;font-size: 14px;color: #333;">1、VIP会员仅支持在电脑端登录使用，不支持在电视端使用。</font>
+	      <font style="display: block;font-size: 14px;color: #333;">2、为了保障VIP会员及推广人员的权益（VIP天数赠送、推广人员收益），支付成功后管理人员即时审核后才会生效。</font>
+	   </div>
+	   
+	  <div class="clear"></div>
+	</div>
+
+<div class="clear"></div>
+</div>
+[#include "../include/footer.html"/]
+
+<script type="text/javascript">
+$(function(){
+	$('.check-item').click(function(){
+		$('.check-item').removeClass('checked-item');
+		$(this).addClass('checked-item');
+		$('#pay-count').html($(this).attr('data'));
+		var imgUrl = '/images/zhifubao'+$(this).attr('data')+'_.png';
+		document.getElementById('zhifubao-mark').src=imgUrl;
+	});
+});
+</script>
+
+</body>
+</html>

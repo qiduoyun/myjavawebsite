@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${channel.name!} - 秀秀育</title>
+<link rel="stylesheet" type="text/css" href="/css/xiuxiuyu.css"/>
+<script src="/js/jquery-3.1.0-min.js"></script>
+<script src="/layer/layer.js"></script>
+</head>
+<body >
+
+[#include "../include/header.html"/]
+
+<div class="content">
+ <span class="tags" style="background: none;margin-bottom: 10px;"><font>你的位置：</font><a href="/">首页</a><font>>></font>
+ 
+ <a href="${channel.fullUrl!}">${channel.name!}</a></span>
+
+</div>
+
+<!-- 视频内容 -->
+[@channel_list  parentId=channel.id]  
+[#list tag_list as c][#if c_index==0]
+<div class="content" style="border: 1px solid #cacbcb;">
+  <span class="tags" style="background-color: #f0f0f0;">
+  
+ 
+    <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #028ab3;">${c.name!}</font>
+  
+    <a class="more" href="${c.fullUrl!}" target="_blank">更多</a>
+  </span>
+    [@content_list channelId=c.id type='3' orderBy='2' count='20']
+            [#list tag_list as a] 
+            [#if a_index=0]
+    <div class="video-list">
+    
+[/#if]
+           [#if a_index=5]
+           </div>
+    <div class="video-list">
+[/#if]
+           [#if a_index=10]</div>
+    <div class="video-list">
+[/#if]
+           [#if a_index=15]</div>
+    <div class="video-list">
+[/#if]
+	  <span style="width: 178px">
+	    <a href="${a.fullUrl!}" target="_blank">
+		  <div style="position: absolute;z-index: 20;left: 10px;top:78px; ">
+		    <img class="opacity-img" width="30" height="30" src="/images/bofanganniu.png">
+		  </div>
+		  
+	     <img width="178" height="118" alt="${a.title}" src="${a.imgPath}">
+	    </a>
+	    
+	    <a target="_blank" href="${a.fullUrl}">${a.title}</a>
+	  </span>
+
+	  
+  	  [/#list]</div>
+	   [/@content_list ]
+  <div class="clear"></div>
+</div>
+[/#if]
+[#if c_index==1]
+<!-- 文章内容 -->
+<div class="content">
+<div style="border: 1px solid #cacbcb;" class="main">
+  <span class="tags">
+   <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #fff">${c.name!}</font>
+   <a class="more" href="${c.fullUrl!}" target="_blank">更多</a>
+  </span>
+  
+   [@content_list channelId=c.id type='1' orderBy='2' count='10']
+ [#list tag_list as a]
+  <div class="article-list">
+
+    <a href="${a.fullUrl}">[@text_cut s=a.title len=15 append='...'/]</a>
+    <em>${a.author!}    发布于：${a.updateTime?string("MM-dd")}</em>
+    <span>[@html_cut s=a.txt len=66 append='...'/]
+    </span>
+    <em>浏览量（2435）</em>
+  </div>
+   [/#list]
+	   [/@content_list ]
+    
+</div>
+
+
+<div class="sidebar" style="border: 1px solid #cacbcb;">
+<span class="tags">
+  <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #fff">热门java基础</font>
+</span>
+
+<ul style="list-style:none; margin: 0 ;padding-top: 0;padding-left: 10px;padding-bottom: 10px;">
+[@content_list channelId=c.id type='1' orderBy='2' count='12']
+ [#list tag_list as a]
+ [#if a_index <= 2]
+<li ><font class="list-number" style="background-color: #ff5500;">${a_index+1}</font><a class="article-link" style="font-size: 14px;display: inline-block;padding-top: 10px;margin-left: 5px;">[@text_cut s=a.title len=15 append='...'/]</a><em style="display: inline-block;color: #ff5500;float: right;margin-right: 10px">(08-19)</em></li>
+[#else]
+<li ><font class="list-number">${a_index+1}</font><a class="article-link" style="font-size: 14px;display: inline-block;padding-top: 10px;margin-left: 5px;">[@text_cut s=a.title len=15 append='...'/]</a><em style="display: inline-block;color: #ff5500;float: right;margin-right: 10px">(08-19)</em></li>
+[/#if]
+
+[/#list]
+	   [/@content_list ]
+</ul>
+
+
+
+</div>
+
+<div class="clear"></div>
+</div>
+[/#if]
+[/#list]
+[/@channel_list]
+[#include "../include/footer.html"/]
+
+</body>
+</html>

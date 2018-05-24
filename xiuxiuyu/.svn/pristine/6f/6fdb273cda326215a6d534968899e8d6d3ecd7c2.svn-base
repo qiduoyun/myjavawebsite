@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>提示信息</title>
+<script src="/js/jquery-3.1.0-min.js"></script>
+<script src="/layer/layer.js"></script>
+<style>
+.link-a{
+text-decoration: none;
+color:#333;
+}
+.link-a:HOVER {
+	cursor: pointer;
+	color:#996600;
+}
+.link-bt{
+text-decoration:none;
+background-color: #528ab3;
+}
+.link-bt:hover{
+text-decoration:none;
+ background-color: #028ab3;
+ cursor: pointer;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+    $(function(){
+    	var state='${state!}';
+    	if(state=='-2'){
+    		toLogin();
+    	}else if(state=='-1'){
+    		openVIP();
+    	}else{
+    		toPay();
+    	}
+    });
+    function toLogin(){
+    	layer.open({
+    	  type: 1,
+    	  title: '登录',
+    	  shadeClose: false,
+    	  shade: 0.8,
+    	  area: ['400px', '200px'],
+    	  content: login
+    	});     	
+    }
+    function openVIP(){
+    	layer.open({
+    	  type: 1,
+    	  title: '开通会员',
+    	  shadeClose: false,
+    	  shade: 0.8,
+    	  area: ['400px', '220px'],
+    	  content: vip
+    	});     	
+    }
+    function toPay(){
+    	layer.open({
+    	  type: 1,
+    	  title: '立即续费',
+    	  shadeClose: false,
+    	  closeBtn: 0,
+    	  shade: 0.8,
+    	  area: ['400px', '220px'],
+    	  content: pay
+    	});     	
+    }
+    var login='<div style="width:300px;margin:0 auto;padding-top:15px;">'+
+    '<p>您目前尚未登录，请前往登录您的账号~</p>'+
+	    '<a class="link-bt" style="display: block;width:300px;margin: 30px auto;padding-top:5px;padding-bottom:5px;text-align: center;color:#fff;font-size: 18px;" href="/toLogin.jhtml">前往登录</a>'+
+	 '</div>';    
+    var vip='<div style="width:300px;margin:0 auto;padding-top:15px;">'+
+		    '<p>您目前是普通用户，请前往开通会员享受所有服务~</p>'+
+			    '<a class="link-bt" style="display: block;width:300px;margin: 30px auto;padding-top:5px;padding-bottom:5px;text-align: center;color:#fff;font-size: 18px;" href="/toOrder.jhtml">立即开通</a>'+
+			 '</div>';
+	var pay='<div style="width:300px;margin:0 auto;padding-top:15px;">'+
+		'<p>尊敬的会员，您的会员已到期，请前往续费~</p>'+
+		'<a class="link-bt" style="display: block;width:300px;margin: 30px auto;padding-top:5px;padding-bottom:5px;text-align: center;color:#fff;font-size: 18px;" href="/toOrder.jhtml">立即续费</a>'+
+		'</div>';   			 
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 
+	 http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd 
+	 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd"
+	default-lazy-init="true">
+   
+	<!-- 配置kaptcha验证码 -->  
+	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">  
+	    <property name="config">  
+	        <bean class="com.google.code.kaptcha.util.Config">  
+	            <constructor-arg type="java.util.Properties">  
+	                <props>  
+	                    <prop key="kaptcha.image.width">100</prop>  
+	                    <prop key="kaptcha.image.height">60</prop>  
+	                    <prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.NoNoise</prop>  
+	                    <prop key="kaptcha.textproducer.char.string">0123456789abcdefghijklmnopqrstuvwxyz</prop>  
+	                    <prop key="kaptcha.textproducer.char.length">4</prop>  
+	                </props>  
+	            </constructor-arg>  
+	        </bean>  
+	    </property>  
+	</bean> 
+	
+</beans>

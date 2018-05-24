@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>秀秀育VIP-标准版</title>
+<script src="/js/jquery-3.1.0-min.js"></script>
+<script src="/layer/layer.js"></script>
+</head>
+<style>
+.link-a{
+text-decoration: none;
+color:#333;
+}
+.link-a:HOVER {
+	cursor: pointer;
+	color:#996600;
+}
+.link-bt{
+text-decoration:none;
+background-color: #528ab3;
+}
+.link-bt:hover{
+text-decoration:none;
+ background-color: #028ab3;
+ cursor: pointer;
+}
+</style>
+<body>
+<script type="text/javascript">
+$(function(){
+	order()
+});
+function order(){
+	layer.open({
+	  type: 1,
+	  title: '会员支付',
+	  shadeClose: false,
+	  closeBtn: 0,
+	  shade: 0.8,
+	  area: ['400px', '300px'],
+	  content: pay
+	});     	
+}
+var pay='<div style="width:300px;margin:0 auto;padding-top:15px;">'+
+    '<form id="order-form" action="order.jhtml" method="post">'+
+	'<p>支付账号:<input id="payAccount" style="width:220px;float:right;" name="payAccount" placeholder="微信或支付宝账号/昵称（必填）"/></p>'+
+	'<p>支付类型:<select style="width:226px;float:right;" name="payType"><option value="1">微信支付</option><option value="2">支付宝支付</option></select></p>'+
+	'<p>秀秀育码:<input id="token" style="width:220px;float:right;" name="token" placeholder="邀请人手机号码（选填）"/></p>'+
+	'<p style="font-size:12px;color:#028ab3;">注：填写秀秀育码可以免费赠送5天尊贵会员</p>'+
+	'<a class="link-bt" style="display: block;width:300px;margin: 30px auto;padding-top:5px;padding-bottom:5px;text-align: center;color:#fff;font-size: 18px;" onclick="submitOrder()">确认</a>'+
+	'</form>'+
+	'</div>';
+	
+function submitOrder(){
+	var payAccount=$('#payAccount').val();
+	if(payAccount==''){
+		layer.alert('请输入您的支付账号或昵称');
+		return;
+	}
+	$('#order-form').submit();
+}
+</script> 
+</body>
+</html>

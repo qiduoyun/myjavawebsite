@@ -1,0 +1,190 @@
+package com.xiuxiuyu.web;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.xiuxiuyu.beans.Channel;
+import com.xiuxiuyu.beans.Content;
+import com.xiuxiuyu.dao.IContentDao;
+import com.xiuxiuyu.service.IChannelService;
+import com.xiuxiuyu.service.IContentService;
+import com.xiuxiuyu.util.PageInfo;
+import com.xiuxiuyu.util.StringUtils;
+/**
+ * 内容管理
+ * @author 桂都
+ *
+ */
+@Controller
+public class ContentAct {
+	@Autowired
+    private IContentService contentService;
+	@Autowired
+	private IChannelService channelService;
+	@RequestMapping("/content/index.do")
+    public String index(HttpServletRequest request,ModelMap map){
+		map.put("hello", "helloword");
+    	return "content/index";
+    }
+	/**
+	 * 查询内容文章列表
+	 * @param request
+	 * @param pageInfo 分页对象
+	 * @param channel 栏目
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/content/list.do")
+	@ResponseBody
+	public String findContentList(HttpServletRequest request,PageInfo<Content> pageInfo,Channel channel) throws IOException{
+		PageInfo<Content> info = contentService.findContentList(pageInfo, channel);
+		List list = new ArrayList();
+		List<Content> contents = info.getResultList();
+		for(Content content:contents){
+			Map map=new HashMap();
+			map.put("id", content.getId());
+			map.put("title", content.getTitle());
+			map.put("channelName", content.getChannel().getName());
+			map.put("type", content.getType());
+			list.add(map);
+		}
+		JSONObject object = new JSONObject();
+		object.put("total", info.getRows());
+		object.put("rows", list);
+		return object.toString();
+	}
+	@RequestMapping("/content/toList.do")
+	public String toList(Integer channelId,ModelMap modelMap){
+		if(channelId!=null){
+			Channel channel = channelService.getChannelInfo(channelId);
+			modelMap.put("channel", channel);	
+		}
+		return "content/list";
+	}
+	/**
+	 * 新增内容
+	 * @return
+	 */
+	@RequestMapping("/content/toAdd.do")
+	public String toAdd(){
+		return "content/add";
+	}
+	@RequestMapping("/content/add.do")
+	@ResponseBody
+	public String add(Content content){
+		int state=0;
+		String error="";
+		Channel channel = channelService.getChannelInfo(content.getChannelId());
+		content.setContentTemplate(channel.getContentTemplate());
+		content.setState(0);
+		content.setUpdateTime(new Date());
+		content.setUrl(channel.getUrl());
+		try {
+			contentService.updateContent(content);
+			state=1;
+		} catch (Exception e) {
+			state=-1;
+			error=e.getMessage();
+		}
+		JSONObject object = new JSONObject();
+		object.put("state", state);
+		object.put("error", error);
+		return object.toString();
+	}
+
+	@RequestMapping("/content/toEdit.do")
+	public String toEdit(Integer id,ModelMap map){
+		Content content=contentService.getContentById(id);
+		map.put("content", content);
+	    return "content/edit";	
+	}
+	/**
+	 * 修改内容
+	 * @param content
+	 * @return
+	 */
+	@RequestMapping("/content/edit.do")
+	@ResponseBody
+	public String edit(Content content){
+		int state=0;
+		String error="";
+		Content editContent=contentService.getContentById(content.getId());
+		editContent.setAuthor(content.getAuthor());
+		editContent.setChannelId(content.getChannelId());
+		editContent.setDescription(content.getDescription());
+		editContent.setFilePath(content.getFilePath());
+		editContent.setImgPath(content.getImgPath());
+		editContent.setKeyword(content.getKeyword());
+		editContent.setTitle(content.getTitle());
+		editContent.setTxt(content.getTxt());
+		editContent.setType(content.getType());
+		editContent.setVideoType(content.getVideoType());
+		Channel channel = channelService.getChannelInfo(content.getChannelId());
+		editContent.setContentTemplate(channel.getContentTemplate());
+		editContent.setState(0);
+		editContent.setUpdateTime(new Date());
+		editContent.setUrl(channel.getUrl());
+		try {
+			contentService.updateContent(editContent);
+			state=1;
+		} catch (Exception e) {
+			state=-1;
+			error=e.getMessage();
+		}
+		JSONObject object = new JSONObject();
+		object.put("state", state);
+		object.put("error", error);
+		return object.toString();
+	}
+	/**
+	 * 删除内容(已删除状态内容彻底删除，正常内容更新状态为删除状态)
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/content/delete.do")
+	public String delete(Integer id,Integer channelId,ModelMap modelMap){
+		Content content = contentService.getContentById(id);
+		try {
+			if(content.getState().intValue()==0){
+				content.setState(-1);
+				content.setUpdateTime(new Date());
+				contentService.updateContent(content);
+			}else{
+				contentService.deleteContent(content);	
+			}
+		} catch (Exception e) {
+			System.out.println("delete==>"+e.getMessage());
+		}
+		if(channelId!=null){
+			Channel channel = channelService.getChannelInfo(channelId);
+			modelMap.put("channel", channel);	
+		}
+		return "content/list";
+	}
+	/**
+	 * 获取关键词
+	 * @param title
+	 * @return
+	 */
+	@RequestMapping("/content/getKeyword.do")
+	@ResponseBody
+	public String getKeyword(String title){
+	    JSONObject jsonObject = new JSONObject();
+	    jsonObject.put("tags", StringUtils.getKeyword(title, true));
+	    return jsonObject.toString();
+	}
+}

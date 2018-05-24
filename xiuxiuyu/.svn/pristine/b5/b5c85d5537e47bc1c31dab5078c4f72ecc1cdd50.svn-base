@@ -1,0 +1,14 @@
+package com.xiuxiuyu.dao;
+
+import com.xiuxiuyu.beans.User;
+
+public interface IUserDao {
+	/**
+	 * 根据用户名获取用户信息
+	 * @param username
+	 * @return
+	 */
+	public User getUserByUsername(String username);
+	public void SaveUser(User user);
+	public User getUserById(Integer id);
+}

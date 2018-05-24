@@ -1,0 +1,256 @@
+package com.xiuxiuyu.web;
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.engine.spi.Mapping;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.sun.javafx.collections.MappingChange.Map;
+import com.xiuxiuyu.beans.Channel;
+import com.xiuxiuyu.beans.Content;
+import com.xiuxiuyu.beans.RolePermission;
+import com.xiuxiuyu.beans.User;
+import com.xiuxiuyu.beans.UserRole;
+import com.xiuxiuyu.service.IChannelService;
+import com.xiuxiuyu.service.IContentService;
+import com.xiuxiuyu.service.IUserService;
+import com.xiuxiuyu.util.StringUtils;
+import com.xiuxiuyu.util.UserUtil;
+import com.xiuxiuyu.vo.UserVO;
+
+@Controller
+public class FrontIndexAct {
+	/**
+	 * 模板目录
+	 */
+	private static String BASEPATH="/WEB-INF/t/"; 
+	@Autowired
+	private IContentService contentService;
+	@Autowired
+	private IChannelService channelService;
+	@Autowired
+	private UserUtil userUtil;
+	@Autowired
+	private IUserService userService;
+	/**
+	 * 首页
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping("/index.jhtml")
+    public String index(ModelMap map,HttpServletRequest request){
+		Content content=contentService.getContentById(1);
+		map.put("msg", "hello index");
+		map.put("content", content);
+		map.put("user", userUtil.getFromSession(request.getSession(), "user"));
+    	return "/WEB-INF/t/index/index.html";
+    }
+	/**
+	 * 栏目首页
+	 * @param url
+	 * @return
+	 */
+	@RequestMapping(value="/{url}/index{page}.jhtml",method=RequestMethod.GET)
+	public String channelIndex(@PathVariable String url,@PathVariable String page,ModelMap modelMap,HttpServletRequest request){
+		Channel channel = channelService.getChannelInfoByUrl(url);
+		modelMap.put("channel", channel);
+		modelMap.put("page", page);
+		modelMap.put("user", userUtil.getFromSession(request.getSession(), "user"));
+		return BASEPATH+channel.getChannelTemplate();
+	}
+	/**
+	 * 内容页
+	 * @param url
+	 * @param id
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping("/{url}/{id}.jhtml")
+	public String content(@PathVariable String url,@PathVariable Integer id,ModelMap modelMap,HttpServletRequest request){
+		if(!validateCookies(url, request)){
+			return BASEPATH+"no_permission.html";
+		}
+		Content content = contentService.getContentByUrlAndId(url, id);
+		modelMap.put("content", content);
+		modelMap.put("user", userUtil.getFromSession(request.getSession(), "user"));
+		return BASEPATH+content.getContentTemplate();
+	}
+
+	/**
+	 * 去注册页面
+	 * @return
+	 */
+	@RequestMapping("/toRegister.jhtml")
+	public String toregister(){
+		return BASEPATH+"register.html";
+	}
+	/**e
+	 * 用户注册
+	 * @return
+	 */
+	@RequestMapping("/register.jhtml")
+	public String register(User user, ModelMap map){
+		if (user.getState()==null)
+			user.setState(0);
+		String password=user.getPassword();
+		String password1=StringUtils .getMD5String(password, "");
+		user.setPassword(password1);
+		if(userService.getUserByUsername(user.getUsername())==null){
+		userService.SaveUser(user);
+		
+		return "redirect:/toLogin.html";}
+		
+		else {
+			map.put("message", "注册失败，用户名有重复，请重新注册");
+			return BASEPATH+"register.html";
+		
+		}
+	}	
+	/**
+	 * 去登录
+	 * @return
+	 */
+	@RequestMapping("/toLogin.jhtml")
+	public String tologin(){
+		return BASEPATH+"login.html";
+	}
+	/**
+	 * 用户登录
+	 * @return
+	 * @throws IOException 
+	 */
+	@RequestMapping("/login.jhtml")
+	public String login(String username,String password,HttpServletRequest request,HttpServletResponse response,ModelMap map) {
+		
+		User user=userService.getUserByUsername(username);
+		
+		String password1=StringUtils.getMD5String(password, "");
+		
+		if((user!=null)&&(user.getPassword().equals(password1))){
+			
+			UserVO vo = toUserVO(user);
+			userUtil.setToCookie(response, "username", username);
+			userUtil.setToCookie(response, "password", StringUtils.getMD5String(username, vo.getPassword()));
+			userUtil.setToSession(request.getSession(), "user", vo);
+			
+			return "redirect:/index.jhtml";
+		}
+		
+		else{ map.put("message", "用户名或密码错误");
+			return BASEPATH+"login.html";}
+		
+	}
+	/**
+	 * 退出账号
+	 */
+	@RequestMapping("/loginout.jhtml")
+	public String loginout(HttpServletRequest req,HttpServletResponse res,String path){
+		
+		req.getSession().removeAttribute("user");
+		userUtil.setToCookie(res, "username", "");
+		userUtil.setToCookie(res, "password", "");
+		return "redirect:"+path;
+		
+	}
+	/*
+	 * 
+	 */
+	@RequestMapping("/touser.jhtml")
+	public String touser(){
+		
+		return BASEPATH+"user.html";
+		
+		
+	}
+	/**
+	 * 弹窗用户登录
+	 * @return
+	 */
+	@RequestMapping("/loginAjax.jhtml")
+	@ResponseBody
+	public String loginAjax(String username,String password,HttpServletResponse response){
+		JSONObject jsonObject =new JSONObject();
+		jsonObject.put("username", "zhangsan");
+		jsonObject.put("name", "张三");
+		jsonObject.put("state", 1);
+		jsonObject.put("error", "用户名或密码错误");
+		return jsonObject.toString();
+	}
+	/**
+	 * 转换为UserVO
+	 * @param user
+	 * @return
+	 */
+	private UserVO toUserVO(User user){
+		UserVO userVO = new UserVO();
+		userVO.setName(user.getName());
+		userVO.setPassword(user.getPassword());
+		userVO.setUsername(user.getUsername());
+		Set<String> permissions = new HashSet<String>();
+		for(UserRole userRole:user.getUserRoles()){
+			for(RolePermission rolePermission:userRole.getRole().getRolePermissions()){
+				permissions.add(rolePermission.getPermission().getUrl());
+			}
+		}
+		userVO.setPermissions(permissions);
+		return userVO;
+	}
+	/**
+	 * 验证cookies
+	 * @param url
+	 * @param request
+	 * @return
+	 */
+	private boolean validateCookies(String url,HttpServletRequest request){
+		if(userUtil.getSysPermissions().contains(url)){
+			String username = userUtil.getFromCookie(request, "username");
+			String password = userUtil.getFromCookie(request, "password");
+			if(StringUtils.isEmpty(username)){
+				return false;
+			}else{
+				UserVO userVO = userUtil.getFromSession(request.getSession(), "user");
+				if(userVO==null){
+					User user = userService.getUserByUsername(username);
+					if(user!=null){
+	                 //cookie验证
+	                 if(!StringUtils.getMD5String(username, user.getPassword()).equals(password)){
+	                     return false;
+	                  }
+                       userVO = toUserVO(user);
+                       //无权限
+                       if(!userVO.getPermissions().contains(url)){
+                    	   return false;
+                       }
+                       userUtil.setToSession(request.getSession(), "user", userVO);
+					}else{
+						return false;
+					}
+				}else{
+                    //cookie验证
+                    if(!StringUtils.getMD5String(username, userVO.getPassword()).equals(password)){
+                 	   return false;
+                    }
+                    //无权限
+                    if(!userVO.getPermissions().contains(url)){
+                 	   return false;
+                    }
+				}
+			}
+		}
+		return true;
+	}
+}

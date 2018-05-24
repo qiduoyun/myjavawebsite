@@ -1,0 +1,27 @@
+package com.xiuxiuyu.dao;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.xiuxiuyu.beans.User;
+
+@Repository
+public class UserDaoImp implements IUserDao{
+	@Autowired
+    private SessionFactory sessionFactory;
+	public User getUserByUsername(String username) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from User where username=?");
+		query.setString(0, username);
+		return (User) query.uniqueResult();
+	}
+	
+	public void SaveUser(User user) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		session.saveOrUpdate(user);
+	}
+
+}

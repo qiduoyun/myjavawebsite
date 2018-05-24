@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${channel.name!} - 秀秀育</title>
+<link rel="stylesheet" type="text/css" href="/css/xiuxiuyu.css"/>
+<link rel="stylesheet" href="/css/idangerous.swiper.css">
+<script src="/js/jquery-3.1.0-min.js"></script>
+<script src="/layer/layer.js"></script>
+<script src="/js/idangerous.swiper.min.js"></script>
+</head>
+<body>
+<!-- header part -->
+[#include "../include/header.html"/]
+
+<div class="content">
+
+<span class="tags" style="background: none;margin-bottom: 10px;">
+<font>你的位置:</font>
+<a href="/">首页</a><font>>></font>
+<a href="${channel.parentChannel.fullUrl!}">${channel.parentChannel.name!}</a><font>>></font><a href="${channel.fullUrl!}">${channel.name!}</a>
+</span>
+
+<div style="border: 1px solid #cacbcb;" class="main">
+<span class="tags">
+  <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #fff">${channel.name!}</font>
+  </span>
+    [@page_content_list channelId=channel.id type='3' orderBy='2' count='25' page=page]
+            [#list tag_list as a] 
+            [#if a_index=0]
+    <div class="video-list">
+    
+[/#if]
+           [#if a_index=4]
+           </div>
+    <div class="video-list">
+[/#if]
+           [#if a_index=8]</div>
+    <div class="video-list">
+[/#if]
+           [#if a_index=16]</div>
+    <div class="video-list">
+[/#if]
+      [#if a_index=20]</div>
+    <div class="video-list">
+[/#if]
+	  <span style="width: 178px">
+	    <a href="${a.fullUrl!}" target="_blank">
+		  <div style="position: absolute;z-index: 20;left: 10px;top:78px; ">
+		    <img class="opacity-img" width="30" height="30" src="/images/bofanganniu.png">
+		  </div>
+		  
+	     <img width="178" height="118" alt="${a.title}" src="${a.imgPath}">
+	    </a>
+	    
+	    <a target="_blank" href="${a.fullUrl}">${a.title}</a>
+	  </span>
+
+	  
+  	  [/#list]</div>
+	   
+  
+  <div class="clear"></div>
+  [#include "../include/page.html"/] 
+  [/@page_content_list ]
+</div>
+
+
+<div class="sidebar" style="border: 1px solid #cacbcb;">
+<span class="tags">
+  <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #fff">栏目视频排行</font>
+</span>
+[@content_list channelId=channel.id type='3' orderBy='3' count='25']
+            [#list tag_list as a] 
+[#if a_index==0]
+<span style="display: block;width: 280px;margin: 0 auto;"><a style="display: block;color:#2d374b;font-size: 14px;padding-top: 10px;" href="${a.fullUrl!}" target="_blank">
+${a.title}</a><a style="display: block;position: relative;" href="${a.fullUrl!}" target="_blank"><div style="position: absolute;z-index: 20;left: 10px;top:110px; ">
+<img class="opacity-img" width="30" height="30" src="/images/bofanganniu.png"></div><img  width="280" height="150"  alt="${a.title}" src="${a.imgPath}"></a></span>
+[/#if]
+[#if a_index==1]
+<ul style="list-style-image: url('/images/video_tip.jpg'); margin: 0 ;padding-top: 0;padding-left: 30px;padding-bottom: 10px;">
+[/#if]
+[#if a_index>0]
+<li ><a style="color: #2d374b;font-size: 14px;display: inline-block;padding-top: 10px;" href="${a.fullUrl!}" target="_blank">${a.title}</a><em style="display: inline-block;color: #ff5500;float: right;margin-right: 10px; padding-top: 10px">(${a.updateTime?string("MM-dd")})</em></li>
+[/#if]
+[/#list]
+
+</ul>
+
+
+ [/@content_list ]
+
+</div>
+
+
+</div>
+<div class="clear"></div>
+
+[#include "../include/footer.html"/]
+
+</body>
+</html>

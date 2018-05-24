@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${channel.name!} - 秀秀育</title>
+<link rel="stylesheet" type="text/css" href="/css/xiuxiuyu.css"/>
+<link rel="stylesheet" href="/css/idangerous.swiper.css">
+<script src="/js/jquery-3.1.0-min.js"></script>
+<script src="/layer/layer.js"></script>
+<script src="/js/idangerous.swiper.min.js"></script>
+</head>
+<body>
+<!-- header part -->
+[#include "../include/header.html"/]
+
+<div class="content">
+	<span class="tags" style="background: none;margin-bottom: 10px;">
+	<font>你的位置:</font>
+	<a href="/">首页</a><font>>></font>
+	<a href="${channel.parentChannel.fullUrl!}">${channel.parentChannel.name!}</a><font>>></font><a href="${channel.fullUrl!}">${channel.name!}</a>
+	</span>
+</div>
+
+
+<div class="content">
+<div style="border: 1px solid #cacbcb;" class="main">
+  <span class="tags">
+   <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #fff">${channel.name!}</font>
+  </span>
+
+    [@page_content_list channelId='19' type='1' orderBy='2' count='10' page=page]
+ [#list tag_list as a]
+  <div class="article-list">
+
+    <a href="${a.fullUrl}">[@text_cut s=a.title len=50 append='...'/]</a>
+    <em>${a.author!}    发布于：${a.updateTime?string("MM-dd")}</em>
+    <span>[@html_cut s=a.txt len=66 append='...'/]
+    </span>
+    <em>浏览量（2435）</em>
+  </div>
+   [/#list]
+	  
+
+   [#include "../include/page.html"/] 
+
+   [/@page_content_list ]
+</div>
+
+
+<div class="sidebar" style="border: 1px solid #cacbcb;">
+<span class="tags">
+  <font style="display: inline-block;font-size: 16px;font-weight: bold;padding: 10px ; color: #fff">栏目内容排行榜</font>
+</span>
+
+<ul style="list-style:none; margin: 0 ;padding-top: 0;padding-left: 10px;padding-bottom: 10px;">
+
+[@content_list channelId=channel.id type='1' orderBy='3' count='12']
+ [#list tag_list as a]
+ [#if a_index <= 2]
+<li ><font class="list-number" style="background-color: #ff5500;">${a_index+1}</font><a class="article-link" style="font-size: 14px;display: inline-block;padding-top: 10px;margin-left: 5px;" href="${a.fullUrl!}" target="_blank">[@text_cut s=a.title len=15 append='...'/]</a><em style="display: inline-block;color: #ff5500;float: right;margin-right: 10px">(08-19)</em></li>
+[#else]
+<li ><font class="list-number">${a_index+1}</font><a class="article-link" style="font-size: 14px;display: inline-block;padding-top: 10px;margin-left: 5px;" href="${a.fullUrl!}" target="_blank">[@text_cut s=a.title len=15 append='...'/]</a><em style="display: inline-block;color: #ff5500;float: right;margin-right: 10px">(08-19)</em></li>
+[/#if]
+
+[/#list]
+	   [/@content_list ]
+</ul>
+
+
+</div>
+
+<div class="clear"></div>
+</div>
+
+[#include "../include/footer.html"/]
+</body>
+</html>

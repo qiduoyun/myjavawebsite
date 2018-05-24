@@ -1,0 +1,33 @@
+  <div class="pages">     
+      <font>共${rows}条记录</font>
+	  <font>当前${page}/${total} 页</font>
+	  <a class="next" href="${channel.fullUrl!}">首页</a>
+	   [#if (page gt 1)&&(page gt 2)]
+	     <a class="next" href="/${channel.url}/index${page-1}.jhtml">上一页</a>
+	   [#elseif page==2]
+	     <a class="next" href="/${channel.url}/index.jhtml">上一页</a>
+	   [#else]
+	     <a style="color:#717274;">上一页</a>
+	   [/#if]
+	   
+	   [#if page lt total]
+	     <a class="next" href="/${channel.url}/index${page+1}.jhtml">下一页</a>
+	   [#else]
+	     <a style="color:#717274;">下一页</a>
+	   [/#if]
+	  <a class="next" href="/${channel.url}/index${total}.jhtml">尾页</a>
+	  
+	  第
+	  <select onchange="jumpPage(this.value)">
+	    ${selectStr}
+	  </select> 
+	  页
+	  <script type="text/javascript">
+	     function jumpPage(page){
+	    	 if(page==1){
+	    		 page='';
+	    	 }
+	    	 window.location="/${channel.url}/index"+page+".jhtml";
+	     }
+	  </script>
+  </div>

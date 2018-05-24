@@ -1,0 +1,24 @@
+package com.xiuxiuyu.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.xiuxiuyu.beans.User;
+import com.xiuxiuyu.dao.IUserDao;
+
+@Service
+@Transactional
+public class UserServiceImp implements IUserService{
+	@Autowired
+    private IUserDao userDao;
+	public User getUserByUsername(String username) {
+		return userDao.getUserByUsername(username);
+	}
+	public void SaveUser(User user) {
+		// TODO Auto-generated method stub
+		userDao.SaveUser(user);
+		
+	}
+
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>欢迎注册秀秀育账号</title>
+</head>
+
+<script language="javaScript">
+ function check()
+{
+ var username = document.form1.username.value;
+ var password = document.form1.password.value;
+ var password2 = document.form1.password2.value;
+ if (username==""|| password==""||password2=="")
+ {
+  alert("任意信息不能为空，请重新填写！");
+  return false;
+ }
+ else if(username.length>20){
+     alert("用户名不能超过20个字符，请重新输入！");
+  return false;
+ }
+ else if(password.length<6){
+     alert("密码不能小于6个字符，请重新输入！");
+  return false;
+ }
+
+ else if (password!=password2)
+ {
+     alert("2次密码输入不一致！");
+  return false;
+ }
+ else{
+  return true;
+  }
+
+}
+</script>
+
+<body>
+  
+<div style="margin: 0 auto ;width: 800px;padding-top: 100px;">
+ <div style="float: left;display: inline-block;padding-top:10px;padding-bottom:10px;width: 800px">
+        <a href="/index.jhtml"><img height="50" alt="" src="/images/xiuxiuyu_logo.gif"/></a>
+ </div>
+<form name="form1"   method="post" onsubmit="return check()" action="register.jhtml">
+<span style="margin-bottom:20px">用&nbsp;户&nbsp;名:<input type="text" name="username" /></span>
+ <br><br>
+ 
+<span style="margin-bottom:20px">设置密码:<input type="password" name="password" /></span>
+ <br><br>
+ 
+<span style="margin-bottom:20px">确认密码:<input  type="password" name="password2" /></span>
+ <br>
+ <br>
+<input type="submit" value="注册">
+${message!}
+</form>
+</div>
+</body>
+</html>

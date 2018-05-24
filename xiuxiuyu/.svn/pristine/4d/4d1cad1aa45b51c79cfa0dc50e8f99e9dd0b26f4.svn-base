@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>个人中心</title>
+
+</head>
+<body>
+<div style="width: 900px;margin: 0 auto; background-color: orange;">
+<span style="width:100%;float: left;"><font>用户名：</font><font>会员等级：</font><a href="#">充值</a></span>
+<span style="width:100%;float: left;"><font>用户邮箱：</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">修改邮箱</a></span>
+<span style="width:100%;float: left;"><font>电话号码：</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">修改号码</a></span>
+<span style="width:100%;"><a href="#">修改密码</a></span>
+</div>
+
+
+
+</body>
+</html>
